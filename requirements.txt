@@ -1,6 +1,0 @@
-numpy
-argparse
-torchvision
-torch
-scipy
-scikit-image
