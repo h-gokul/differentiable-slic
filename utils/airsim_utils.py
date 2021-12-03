@@ -61,35 +61,13 @@ def visualize_optical_flow(flow):
 
 #     return flow_hsv
 
-def ned2cam(axis):
-    return np.array((axis[1], axis[2], axis[0]))
+
 
 def cam2ned(axis):
     return np.array((axis[2], axis[0], axis[1]))
 
 
-def relative_orientation(q_start, q_end, mode):
-    r_start = R.from_quat(q_start)
-    r_end   = R.from_quat(q_end)
-    r_diff = r_start.inv() * r_end
-    return r_diff.as_euler(mode)
 
-def relative_pose(apose0, apose1, n2c=True, mode = 'xyz'):
-    # last_pos, last_q are reference frames
-    last_pos = apose0[:3]; pos = apose1[:3]
-    last_q = apose0[3:]; q = apose1[3:]
-
-    #### obtain relative translation (dp_cam)
-    dp = pos - last_pos 
-    dp_body = R.from_quat(last_q).inv().as_matrix() @ dp  # R_inv dt
-    if n2c:
-        r_p = ned2cam(dp_body) # convert from ned to camera frame
-    else:
-        r_p = dp_body
-    #### obtain relative orientation (body_rates_ypr)- yaw pitch roll
-    r_q = relative_orientation(last_q, q, mode)   
-    
-    return np.concatenate((r_p, r_q), axis=0)
 
 def make_intrinsics_layer(w, h, fx, fy, ox, oy):
     ww, hh = np.meshgrid(range(w), range(h))
