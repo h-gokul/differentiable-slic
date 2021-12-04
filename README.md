@@ -1,7 +1,7 @@
 # Differentiable-slic
 This project is a study on differentiable-slic, which uses superpixel sampling networks to obtain segmented optical flow
 
-# Depth Estimation Task 
+# Motion Segmentation Task 
 `pytorch_ssn` package has the differentiable slic + optical flow functions. 
 
 The optical flow we use here is using a method called `RAFT`
