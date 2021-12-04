@@ -27,7 +27,7 @@ class DAVISSegmentationLoader(Dataset):
             for i in range(len(imfiles)-1):
                 res = {'im1': imfiles[i], 'im2': imfiles[i+1], 'gt1': gtfiles[i], 'gt2': gtfiles[i+1] } 
                 self.samples.append(res)
-        self.samples= self.samples[:10]  
+          
         self.resize = Resize(shape)
         
     def _loadBBoxes(self, mask):
