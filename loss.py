@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-
+import numpy as np
 
 def EPE(input_flow, target_flow, sparse=True, mean=True):
     EPE_map = torch.norm(target_flow-input_flow,2,1)
@@ -87,3 +87,102 @@ def sequence_loss(flow_preds, flow_gt, valid, gamma=0.8, max_flow=MAX_FLOW):
     }
 
     return flow_loss, metrics
+
+
+
+def depthErrors(gt, pred):
+    thresh = np.maximum((gt / pred), (pred / gt))
+    a1 = (thresh < 1.25   ).mean()
+    a2 = (thresh < 1.25 ** 2).mean()
+    a3 = (thresh < 1.25 ** 3).mean()
+
+    rmse = (gt - pred) ** 2
+    rmse = np.sqrt(rmse.mean())
+
+    rmse_log = (np.log(gt) - np.log(pred)) ** 2
+    rmse_log = np.sqrt(rmse_log.mean())
+
+    abs_rel = np.mean(np.abs(gt - pred) / gt)
+
+    sq_rel = np.mean(((gt - pred)**2) / gt)
+
+    return abs_rel, sq_rel, rmse, rmse_log, a1, a2, a3
+
+
+###################################################################################################
+
+from torch import nn
+class BCEDiceLoss(nn.Module):
+    def __init__(self, weight=None, size_average=True):
+        super().__init__()
+
+    def forward(self, input, target):
+        pred = input.view(-1)
+        truth = target.view(-1)
+
+        # BCE loss
+        bce_loss = nn.BCELoss()(pred, truth).double()
+
+        # Dice Loss
+        dice_coef = (2.0 * (pred * truth).double().sum() + 1) / (
+            pred.double().sum() + truth.double().sum() + 1
+        )
+
+        return bce_loss + (1 - dice_coef)
+
+
+# https://github.com/pytorch/examples/blob/master/imagenet/main.py
+class MetricTracker(object):
+    """Computes and stores the average and current value"""
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self):
+        self.val = 0
+        self.avg = 0
+        self.sum = 0
+        self.count = 0
+
+    def update(self, val, n=1):
+        self.val = val
+        self.sum += val * n
+        self.count += n
+        self.avg = self.sum / self.count
+# from sklearn.metrics import jaccard_similarity_score as jsc
+
+# https://stackoverflow.com/questions/48260415/pytorch-how-to-compute-iou-jaccard-index-for-semantic-segmentation
+def jaccard_index(pred, target, n_classes = 2):
+    ious = []
+    pred = pred.view(-1)
+    target = target.view(-1)
+
+    # Ignore IoU for background class ("0")
+    for cls in range(0, n_classes):  # This goes from 1:n_classes-1 -> class "0" is ignored
+        pred_inds = pred == cls
+        target_inds = target == cls
+        intersection = (pred_inds[target_inds]).long().sum().data.cpu()  # Cast to long to prevent overflows
+        union = pred_inds.long().sum().data.cpu() + target_inds.long().sum().data.cpu() - intersection
+        if union == 0:
+            ious.append(float('nan'))  # If there is no ground truth, do not include in evaluation
+        else:
+            ious.append(float(intersection) / float(max(union, 1)))
+    print(ious)
+    return np.array(ious)
+
+
+
+# https://github.com/pytorch/pytorch/issues/1249
+def dice_coeff(input, target):
+    num_in_target = input.size(0)
+
+    smooth = 1.0
+
+    pred = input.view(num_in_target, -1)
+    truth = target.view(num_in_target, -1)
+
+    intersection = (pred * truth).sum(1)
+
+    loss = (2.0 * intersection + smooth) / (pred.sum(1) + truth.sum(1) + smooth)
+
+    return loss.mean().item()

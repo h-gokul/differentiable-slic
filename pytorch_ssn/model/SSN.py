@@ -71,7 +71,7 @@ def crop_like(x, target):
         return x[:, :, :target.size(2), :target.size(3)]
 
 class SuperPixelSamplingNet(nn.Module):
-    def __init__(self, num_spixels, num_iter, num_spixels_h, num_spixels_w, device, dtype='train', ssn=1):
+    def __init__(self, num_spixels, num_iter, num_spixels_h, num_spixels_w, device, dtype='train', ssn=0):
         super(SuperPixelSamplingNet, self).__init__()
         if ssn:
             self.trans_features = cnn_module()
@@ -191,7 +191,7 @@ def superpixel_flow( flow, spix_indices):
         for Ci in range(len(torch.unique(spix_indices))):
             Ci_ROI = spix_indices == Ci
             flowCi_patchx, flowCi_patchy = flow[b, :1][Ci_ROI[b]], flow[b, 1:][Ci_ROI[b]] 
-            meanx, meany = torch.mean(flowCi_patchx), torch.mean(flowCi_patchy)
+            meanx, meany = torch.median(flowCi_patchx), torch.median(flowCi_patchy)
             # print(meanx.item(), meany.item())
             flow[b, :1][Ci_ROI[b]] = meanx
             flow[b, 1:][Ci_ROI[b]] = meany

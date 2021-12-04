@@ -68,7 +68,7 @@ def computedepth(x, device):
     tr,rot, intrinsics, flow = x
 
     B,C,H, W = flow.shape
-    depth = torch.zeros((B,1,H, W), dtype=torch.float32)
+    depth = torch.zeros((B,1,H, W)).to(device, dtype=torch.float32)
     for b in range(B):
         # obtain focal length
         fx,fy = intrinsics[b][0,0], intrinsics[b][1,1]
@@ -94,7 +94,6 @@ def computedepth(x, device):
         Z[torch.isinf(Z)] = 0; Z[torch.isnan(Z)] = 0; Z[flow[b]==0]=0; Z[Z<0] = 0; Z[Z>100] = 0
         Z = torch.mean(Z, dim=0)
         # Z = 0.5* torch.sum(Z[0] + Z[1])
-        print(Z.shape)
         depth[b] = Z
     return depth
 
