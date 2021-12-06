@@ -172,6 +172,7 @@ def SSN(pretrained, spixel_size, num_steps=10, dtype = 'layer', device = 'cuda')
     num_spixel_h, num_spixel_w = spixel_size
     num_spixels = num_spixel_h * num_spixel_w
     model = SuperPixelSamplingNet(num_spixels=num_spixels, num_iter=num_steps, num_spixels_h=num_spixel_h, num_spixels_w=num_spixel_w, device=device, dtype=dtype, ssn=bool(pretrained))
+    print(f"SSNLayer size: {model.count_parameters()}")
     model = torch.nn.DataParallel(model)
     if pretrained:
         if torch.cuda.is_available():

@@ -75,11 +75,12 @@ def crop_like(input, target):
         return input[:, :, :target.size(2), :target.size(3)]
 
 class ResUnet(nn.Module):
-    def __init__(self):
+    def __init__(self, args):
         super(ResUnet, self).__init__()
         inputnum = 7; outnum=1
-        
         outputnums = np.array([16,32,64,128,256])
+        if not args.small:
+            outputnums*=2
 
         self.conv0 = conv(inputnum, outputnums[0], kernel_size=7, stride=2, padding=None, bn_layer=True)
         self.conv1 = conv(outputnums[0], outputnums[0], kernel_size=5, stride=2, padding=None, bn_layer=True)
