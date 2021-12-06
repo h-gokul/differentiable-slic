@@ -17,7 +17,7 @@ and train the UNet network. Refer `train_unet.py` for the train and validation f
 Additionally
 
 Differentiable slic
-Refer the depthEstimation.ipynb notebook for step by step implementation details to obtain optical flow and compute depth using airsim data which is present [here]([here](https://drive.google.com/drive/folders/16V2-7NOEKJjsb3ChHGXy3AGudNjWGqA-?usp=sharing) 
+Refer the depthEstimation.ipynb notebook for step by step implementation details to obtain optical flow and compute depth using airsim data which is present [here](https://drive.google.com/drive/folders/16V2-7NOEKJjsb3ChHGXy3AGudNjWGqA-?usp=sharing) 
 
 
 
