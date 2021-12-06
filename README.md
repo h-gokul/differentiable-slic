@@ -1,7 +1,7 @@
 # Differentiable-slic
 This project is a study on differentiable-slic, which uses superpixel sampling networks to obtain segmented optical flow
 
-# Motion Segmentation Task 
+## Motion Segmentation Task 
 
 We will be using [Davis Dataset](https://graphics.ethz.ch/Downloads/Data/Davis/DAVIS-data.zip) for motion segmentation.
 
