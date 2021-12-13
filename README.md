@@ -13,7 +13,7 @@ We will be using [Davis Dataset](https://graphics.ethz.ch/Downloads/Data/Davis/D
 
 The optical flow we use here is using a method called `RAFT`
 
-We already finetuned the optical flow model with the simulated data from [here](https://drive.google.com/drive/folders/16V2-7NOEKJjsb3ChHGXy3AGudNjWGqA-?usp=sharing)
+We also tried to finetune the optical flow model with the simulator engine [Airsim](https://github.com/microsoft/AirSim). A subset of the data is [here](https://drive.google.com/drive/folders/16V2-7NOEKJjsb3ChHGXy3AGudNjWGqA-?usp=sharing)
 
 Even though we want to train the model end to end, due to resource and time constraints, we will choose to pre generate the superpixels and optical flow from the corresponding networks. `slicgenerator.py` generates the SuperpixelSamplingNetwork's conv-features and saves them. This network is fairly generalizable, hence it was not finetuned.  `flowgenerator.py` generates optical flow and saves them. Load these two, along with images and groundtruth in the dataloader `DavisMoSegLoader` and train the UNet network. Refer `train_unet.py` for the train and validation functions.
 
