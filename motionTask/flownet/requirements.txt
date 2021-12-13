@@ -1,0 +1,10 @@
+torch>=1.2
+torchvision
+numpy
+spatial-correlation-sampler>=0.2.1
+tensorboard
+imageio
+argparse
+path
+tqdm
+scipy
