@@ -28,3 +28,7 @@ We experimented the paper "Superpixel Segmentation using fully connected convolu
 Future Works
 [TODO]  : Follow the same routine, but train the U-Net for [multi-object video segmentation using Davis Dataset](https://davischallenge.org/davis2017/code.html#unsupervised)
 [TODO]  : Motion Segmentation Pipeline a bayesian learning framework instead of relying on Residual UNets.
+
+
+## Classification Task
+The code for image classification can be found in the pytorch-cifar folder. Nothing has been changed from default traiing except for model instantiation in main.py. All work done outside main.py was done in models folder. In the models folder, convmixer.py defines a standard Convmixer from the Patches are All You Need Paper [here](https://github.com/tmp-iclr/convmixer). convmixerSSN.py defines the convmixer with superpixel sampling for the patch embeddings. The patch is attended according to the soft pixel mappings produced by ssn, then a linear embedding over the patch produces the patch representation. In the ssn_pytorch_joshuasmith folder is the code of differentiable superpixel segmentation. The model.py and lib/ssn.py files have been modified to run 5-10x faster on cifar data by replacing the sparse affinity matrix calculation with regionwise stacking and dense matrix operations.  
