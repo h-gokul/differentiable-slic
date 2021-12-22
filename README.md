@@ -1,6 +1,9 @@
 # Differentiable-slic
 This project is a study on differentiable-slic, which uses superpixel sampling networks to obtain segmented optical flow
 
+## Link to video PPT
+https://drive.google.com/file/d/1P7TwEfejR2gMQMzcnIKwnp3awxkAjLap/view?usp=sharing
+
 ## Motion Segmentation Task 
 
 - This repo also contains the tests we ran for Optical flow. Check `OpticalFlow.ipynb` for flownetS's results and our test on enforcing smoothness constraints using superpixels.
