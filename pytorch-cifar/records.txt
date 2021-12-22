@@ -1,0 +1,23 @@
+cifar10 pan 256/8/9/8 max test acc: 82.770%
+cifar10 pan 256/8/9/4 max test acc: 88.560%
+cifar10 pan 256/8/9/2 max test acc: 92.640%
+
+cifar10 ssn 256/8/9/8 max test acc: 79.560%
+cifar10 ssn 256/8/9/4 max test acc: 86.82%
+cifar10 ssm 256/8/9/2 max text acc: 90.30%
+
+cifar10 nodif-ssn 256/8/9/8 max test acc:80.00% accomp. train acc:99.404%
+cifar10 nodif-ssn 256/8/9/4 max test acc:86.77% accomp. train acc:99.960%
+cifar10 nodif-ssn 256/8/9/4 max test acc:90.40% accomp. train acc:99.996%
+
+cifar10 no-ssn3x3base 256/8/9/8 max test acc: 75.92% accomp. train acc: 99.482%
+
+cifar10 convEqual 256/8/9/24 max test acc: 76.18% accomp. train acc: 99.574%
+
+cifar10 64/4/9/24 results below
+
+cifar10 no-ssn3x3base 64/8/9/4 max test acc: 82.13% accomp. train acc: 89.190%
+cifar10 pan 64/8/9/4 max test acc: 82.48%, accomp train acc: 89.612%
+cifar10 pan 64/8/9/8 max test acc: 76.02%, accomp train acc: 79.676%
+cifar10 nodif-ssn 64/8/9/4 max test acc: max test acc: 83.58%, accomp train acc: 89.436%
+cifar10 ssn 64/8/9/4 max test acc: accom tain acc: 83.83%
