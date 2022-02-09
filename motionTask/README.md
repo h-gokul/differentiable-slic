@@ -1,6 +1,14 @@
 # Differentiable-slic
 This project is a study on differentiable-slic, which uses superpixel sampling networks to obtain segmented optical flow
 
+This repository is derived from the following research works
+
+[Superpixel Sampling Networks](https://github.com/CYang0515/pytorch_ssn)
+[Pyramidal Stereo Matching](https://github.com/JiaRenChang/PSMNet)
+[FlowNet](https://github.com/ClementPinard/FlowNetPytorch)
+[Recurrent All-Pairs Field Transform](https://github.com/princeton-vl/RAFT)
+[Superpixel Segmentation using Fully Convolutional Networks](https://github.com/fuy34/superpixel_fcn)
+
 # Motion Segmentation Task 
 
 We will be using [Davis Dataset](https://graphics.ethz.ch/Downloads/Data/Davis/DAVIS-data.zip) for motion segmentation.
