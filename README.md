@@ -10,8 +10,6 @@ This repository contains a detailed study on superpixels, as a part of the cours
 # Differentiable SuperPixel networks
 This project is a study on differentiable-slic, where we integrate two methods for superpixel generation to integrate in any deep learning architecture. We used implementations of [SuperPixel Sampling Networks](https://github.com/CYang0515/pytorch_ssn) and [Fully convolutional Superpixel Networks](https://github.com/fuy34/superpixel_fcn)
 
-## Link to video PPT
-https://drive.google.com/file/d/1P7TwEfejR2gMQMzcnIKwnp3awxkAjLap/view?usp=sharing
 
 ## Motion Segmentation Task 
 
@@ -45,3 +43,5 @@ Future Works
 [TODO]  : Follow the same routine, but train the U-Net for [multi-object video segmentation using Davis Dataset](https://davischallenge.org/davis2017/code.html#unsupervised)
 [TODO]  : Motion Segmentation Pipeline a bayesian learning framework instead of relying on Residual UNets.
   
+## Link to video PPT
+https://drive.google.com/file/d/1P7TwEfejR2gMQMzcnIKwnp3awxkAjLap/view?usp=sharing
