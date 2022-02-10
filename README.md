@@ -2,9 +2,9 @@ This repository contains a detailed study on superpixels, as a part of the cours
 
 # Segmentation with superpixels
 
-```Kmeans-SLIC``` notebook contains code for of Kmeans image clustering and Simple Linear Iterative Clustering for superpixel generation. The implementations are built from scratch using python
+```Kmeans-SLIC``` notebook contains code for of Kmeans image clustering and Simple Linear Iterative Clustering for superpixel generation. The implementations are built from scratch using python. This was also the first assignment of the course
 
-```Segmentation``` notebook contains code for a image segmentation pipeline that classifies superpixel patches using a VGG-19 backbone, and assembles the predictions to form a segmentation map. The results of these pipline are further improved by incorporating and zoom out features.
+```Segmentation``` notebook contains code for a image segmentation pipeline that classifies superpixel patches using a VGG-19 backbone, and assembles the predictions to form a segmentation map. The results of these pipline are further improved by incorporating and zoom out features. This was the second assignment of the course.
 
 
 # Differentiable SuperPixel networks
