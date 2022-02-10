@@ -1,12 +1,21 @@
-# Differentiable-slic
-This project is a study on differentiable-slic, which uses superpixel sampling networks to obtain segmented optical flow
+This repository contains a detailed study on superpixels, as a part of the course CMSC828i, at the University of Maryland.
+
+# Segmentation with superpixels
+
+```Kmeans-SLIC``` notebook contains code for of Kmeans image clustering and Simple Linear Iterative Clustering for superpixel generation. The implementations are built from scratch using python
+
+```Segmentation``` notebook contains code for a image segmentation pipeline that classifies superpixel patches using a VGG-19 backbone, and assembles the predictions to form a segmentation map. The results of these pipline are further improved by incorporating and zoom out features.
+
+
+# Differentiable SuperPixel networks
+This project is a study on differentiable-slic, where we integrate two methods for superpixel generation to integrate in any deep learning architecture. We used implementations of [SuperPixel Sampling Networks](https://github.com/CYang0515/pytorch_ssn) and [Fully convolutional Superpixel Networks](https://github.com/fuy34/superpixel_fcn)
 
 ## Link to video PPT
 https://drive.google.com/file/d/1P7TwEfejR2gMQMzcnIKwnp3awxkAjLap/view?usp=sharing
 
 ## Motion Segmentation Task 
 
-- This repo also contains the tests we ran for Optical flow. Check `OpticalFlow.ipynb` for flownetS's results and our test on enforcing smoothness constraints using superpixels.
+- This folder contains the tests we ran for Optical flow. Check `OpticalFlow.ipynb` for flownetS's results and our test on enforcing smoothness constraints using superpixels.
 
 Refer `Segmentation.ipynb` for tests on Video Segmentation Architecture. 
 
